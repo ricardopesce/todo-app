@@ -35,7 +35,7 @@ void MyTodo::show_data(){
     query.prepare( sql );
 
     if(query.exec() ){
-        ui->tb_show->clear(); // limpa tabela
+        clear_table();
         int column_count = 3;
 
         ui->tb_show->setColumnCount(column_count); // inserindo colunas
@@ -61,20 +61,11 @@ void MyTodo::show_data(){
     }
 }
 
-
-void MyTodo::on_actionSair_triggered(){
-    close();
-}
-
-void MyTodo::on_actionSobre_MyTodo_triggered(){
-    QMessageBox::about(this, "Sobre esse programa",
-                       "<h2>My ToDo 1.0.0</h2>"
-                       "<p>Projeto Desenvolvido para o Curso de Qt Moderno com C++<br>"
-                       "prof. Marcos Oliveira<br>"
-                       "Adaptado por Ricardo Pesce</p>"
-                       "<p><i>This program is provided AS IS, with NO WARRANTY OF ANY KIND<br>"
-                       "INCLUDING THE WARRANTY OF DESIGN, MERCHANTABILITY"
-                       "AND FITNESS FOR A PARTICULAR PURPOSE.</i></p>");
+void MyTodo::clear_table(){
+    for( int i=0; i < ui->tb_show->rowCount(); i++ ){
+        ui->tb_show->removeRow( i );
+    }
+    ui->tb_show->clear(); // limpa tabela
 }
 
 
@@ -113,4 +104,20 @@ void MyTodo::on_tb_show_cellClicked(int row, int column){
     Editar e(this, id, str_todo);
     e.exec();
     show_data();
+}
+
+
+void MyTodo::on_actionSair_triggered(){
+    close();
+}
+
+void MyTodo::on_actionSobre_MyTodo_triggered(){
+    QMessageBox::about(this, "Sobre esse programa",
+                       "<h2>My ToDo 1.0.1</h2>"
+                       "<p>Projeto Desenvolvido no Curso de Qt Moderno com C++<br>"
+                       "prof. Marcos Oliveira<br>"
+                       "Adaptado por Ricardo Pesce</p>"
+                       "<p><i>This program is provided AS IS, with NO WARRANTY OF ANY KIND<br>"
+                       "INCLUDING THE WARRANTY OF DESIGN, MERCHANTABILITY"
+                       "AND FITNESS FOR A PARTICULAR PURPOSE.</i></p>");
 }

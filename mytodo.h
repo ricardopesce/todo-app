@@ -30,6 +30,8 @@ public:
 
     void show_data();
 
+    void clear_table();
+
     ~MyTodo();
 
 private slots:
