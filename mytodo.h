@@ -6,6 +6,7 @@
 #include <QtSql>
 #include <QFileInfo>
 #include <QDebug>
+#include "editar.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MyTodo; }
@@ -23,6 +24,9 @@ public:
     QString user = home + "/.config/mytodo.db";
 
     QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
+    QSqlQuery query;
+    QString sql = "";
+    QString str_todo = "";
 
     void show_data();
 
@@ -32,6 +36,10 @@ private slots:
     void on_actionSair_triggered();
 
     void on_actionSobre_MyTodo_triggered();
+
+    void on_btn_add_clicked();
+
+    void on_tb_show_cellClicked(int row, int column);
 
 private:
     Ui::MyTodo *ui;
