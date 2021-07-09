@@ -5,6 +5,7 @@ Editar::Editar(QWidget *parent, int id, QString todo) : QDialog(parent), ui(new 
     ui->setupUi(this);
     ui->label_id->setText( QString::number(id) );
     ui->field_txt->setText( todo );
+    ui->btn_edit->setFocus();
 }
 
 Editar::~Editar()
